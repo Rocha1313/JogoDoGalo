@@ -29,6 +29,7 @@ public class Game {
         int playerThatMove = 0;
 
         while(playAgain.equals("1")) {
+            resetPos();
             printGame();
             while (true) {
                 while (itsAnOption) {
@@ -73,6 +74,13 @@ public class Game {
                 System.out.println("0 - NO");
                 playAgain = sc.next();
             } while (!playAgain.equals("1") && !playAgain.equals("0"));
+        }
+    }
+
+    //Reset all position's
+    private void resetPos(){
+        for(int i = 0; i <9; i++){
+            numbers.set(i,(i + 1));
         }
     }
 
