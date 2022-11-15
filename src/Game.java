@@ -1,5 +1,4 @@
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
 
 public class Game {
     private static Position[][] table = new Position[3][3];
@@ -30,9 +29,9 @@ public class Game {
 
         while(playAgain.equals("1")) {
             System.out.println();
-            System.out.println("Player (  "+players[0].getPlayerCharacter()+"  ): "+players[0].getWins()+" win's    ---    "+players[0].getLosses()+" losses");
+            System.out.println("Player (  "+players[0].getPlayerCharacter()+"  ): "+players[0].getWins()+" win's");
             System.out.println();
-            System.out.println("Player (  "+players[1].getPlayerCharacter()+"  ): "+players[1].getWins()+" win's    ---    "+players[1].getLosses()+" losses");
+            System.out.println("Player (  "+players[1].getPlayerCharacter()+"  ): "+players[1].getWins()+" win's");
             System.out.println();
 
             playerThatMove = (int) (Math.random() * 2);
