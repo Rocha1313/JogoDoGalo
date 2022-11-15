@@ -1,8 +1,8 @@
 public class Position {
     private String player;
 
-    public Position(){
-        this.player = "-";
+    public Position(String number){
+        this.player = number;
     }
 
     public String getPlayer() {
