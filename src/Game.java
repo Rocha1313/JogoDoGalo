@@ -1,5 +1,7 @@
+import java.util.Scanner;
+
 public class Game {
-    private Position[][] table = new Position[3][3];
+    private static Position[][] table = new Position[3][3];
 
     public Game(){
         for(int i = 0; i < table.length; i++){
@@ -10,15 +12,21 @@ public class Game {
     }
 
     //Method's
+    public void startGame(){
+        Scanner sc = new Scanner(System.in);
+        String chart;
+        System.out.println("What's your character player one?");
+        chart = sc.next();
+        Player playerOne = new Player(chart);
+        System.out.println("What's your character player two?");
+        chart = sc.next();
+        Player playerTwo = new Player(chart);
 
+
+    }
 
     //Getter's
     public Position[][] getTable() {
         return table;
-    }
-
-    //Setter's
-    public void setTable(Position[][] table) {
-        this.table = table;
     }
 }
