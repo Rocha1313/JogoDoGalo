@@ -23,23 +23,35 @@ public class Game {
         Scanner sc = new Scanner(System.in);
         Player[] players = players();
         String playAgain = "1";
+        int plays;
         int choice;
         boolean itsAnOption;
         int playerThatMove;
 
         while(playAgain.equals("1")) {
-            System.out.println();
-            System.out.println("Player (  "+players[0].getPlayerCharacter()+"  ): "+players[0].getWins()+" win's");
-            System.out.println();
-            System.out.println("Player (  "+players[1].getPlayerCharacter()+"  ): "+players[1].getWins()+" win's");
-            System.out.println();
+            //Print Player's Score
+            {
+                System.out.println();
+                System.out.println("Player (  " + players[0].getPlayerCharacter() + "  ): " + players[0].getWins() + " win's");
+                System.out.println();
+                System.out.println("Player (  " + players[1].getPlayerCharacter() + "  ): " + players[1].getWins() + " win's");
+                System.out.println();
+            }
 
-            playerThatMove = (int) (Math.random() * 2);
-            itsAnOption = true;
-            choice = 0;
+            //Var's
+            {
+                playerThatMove = (int) (Math.random() * 2);
+                itsAnOption = true;
+                choice = 0;
+                plays = 0;
+            }
 
+            //Check if player wants to play again
             printGame();
             while (true) {
+                plays++;
+
+                //Ask where player wants to play and check if it's a valid option
                 while (itsAnOption) {
                     System.out.println("Where do you want to play?");
                     choice = sc.nextInt();
@@ -62,6 +74,11 @@ public class Game {
                 if (checkVictory(players[playerThatMove])) {
                     resetPos();
                     players[playerThatMove].setWins(players[playerThatMove].getWins() + 1);
+                    break;
+                }
+
+                //Check Draws
+                if(plays == 9){
                     break;
                 }
 
@@ -100,6 +117,7 @@ public class Game {
             numbers.add(i);
         }
     }
+
 
     //Check if the game have 3 in a row
     private boolean checkVictory(Player player){
@@ -206,10 +224,5 @@ public class Game {
                 table[2][2].setPlayer(player.getPlayerCharacter());
             default:
         }
-    }
-
-    //Getter's
-    public Position[][] getTable() {
-        return table;
     }
 }

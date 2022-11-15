@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="11393c18-cbcc-4cb8-816c-777e3de82ba7" name="Changes" comment="Method Reset Position addon">
+    <list default="true" id="11393c18-cbcc-4cb8-816c-777e3de82ba7" name="Changes" comment="Better away of checking the victory&#10;Correction">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -143,7 +142,21 @@
       <option name="project" value="LOCAL" />
       <updated>1668530235527</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Better away of checking the victory">
+      <created>1668531301688</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1668531301688</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Better away of checking the victory&#10;Correction">
+      <created>1668531376640</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1668531376640</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -172,6 +185,8 @@
     <MESSAGE value="Reset position on New Game" />
     <MESSAGE value="Method Reset Position Correction" />
     <MESSAGE value="Method Reset Position addon" />
-    <option name="LAST_COMMIT_MESSAGE" value="Method Reset Position addon" />
+    <MESSAGE value="Better away of checking the victory" />
+    <MESSAGE value="Better away of checking the victory&#10;Correction" />
+    <option name="LAST_COMMIT_MESSAGE" value="Better away of checking the victory&#10;Correction" />
   </component>
 </project>
