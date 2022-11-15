@@ -23,46 +23,66 @@ public class Game {
     public void startGame(){
         Scanner sc = new Scanner(System.in);
         Player[] players = players();
-
+        String playAgain = "1";
         int choice = 0;
         boolean itsAnOption = true;
         int playerThatMove = 0;
 
-        printGame();
-        while(true) {
-            while (itsAnOption) {
-                System.out.println("Where do you want to play?");
-                choice = sc.nextInt();
-                for (int i = 0; i < numbers.size(); i++) {
-                    if (numbers.get(i) == choice) {
-                        numbers.remove(i);
-                        itsAnOption = false;
-                        break;
+        while(playAgain.equals("1")) {
+            printGame();
+            while (true) {
+                while (itsAnOption) {
+                    System.out.println("Where do you want to play?");
+                    choice = sc.nextInt();
+                    for (int i = 0; i < numbers.size(); i++) {
+                        if (numbers.get(i) == choice) {
+                            numbers.remove(i);
+                            itsAnOption = false;
+                            break;
+                        }
+                    }
+                    if (itsAnOption) {
+                        System.out.println();
+                        System.out.println("Chose a valid position!!!\n");
                     }
                 }
-                if(itsAnOption) {
-                    System.out.println();
-                    System.out.println("Chose a valid position!!!\n");
+                setOnPosition(players[playerThatMove], choice);
+                printGame();
+
+                //Check Victory then if the player win, quit
+
+                if (checkVictory(players[playerThatMove])) {
+                    playerScore(players, players[playerThatMove]);
+                    break;
                 }
-            }
-            setOnPosition(players[playerThatMove], choice);
-            printGame();
 
-            //Check Victory then if the player win, quit
-
-            if(checkVictory(players[playerThatMove])){
-                break;
-            }
-
-            //Change the player that will move at next round
-            if (playerThatMove == 1){
-                playerThatMove = 0;
+                //Change the player that will move at next round
+                if (playerThatMove == 1) {
+                    playerThatMove = 0;
+                    itsAnOption = true;
+                    continue;
+                }
+                playerThatMove = 1;
                 itsAnOption = true;
-                continue;
             }
-            playerThatMove = 1;
-            itsAnOption = true;
+
+            //Ask the player if he needs to play again
+            do {
+                System.out.println("Wanna play Again???");
+                System.out.println("1 - YES");
+                System.out.println("0 - NO");
+                playAgain = sc.next();
+            } while (!playAgain.equals("1") && !playAgain.equals("0"));
         }
+    }
+
+    //Increase the number of victories/losses of a player
+    private void playerScore(Player[] players, Player winner){
+        if(players[0] != winner){
+            players[0].setLosses((players[0].getLosses() + 1));
+        }
+        players[1].setLosses((players[1].getLosses() + 1));
+        winner.setWins(winner.getWins() + 1);
     }
 
     //Check if the game have 3 in a row
