@@ -1,7 +1,9 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Game {
     private static Position[][] table = new Position[3][3];
+    ArrayList<Integer> numbers = new ArrayList<>();
 
     public Game(){
         int counter= 1;
@@ -11,12 +13,18 @@ public class Game {
                 counter++;
             }
         }
+
+        for(int i = 1; i <=9; i++){
+            numbers.add(i);
+        }
     }
 
     //Method's
     public void startGame(){
         Scanner sc = new Scanner(System.in);
         String chart;
+        int choice = 0;
+        boolean itsAnOption = true;
         System.out.println("What's your character player one?");
         chart = sc.next();
         Player playerOne = new Player(chart);
@@ -24,6 +32,20 @@ public class Game {
         chart = sc.next();
         Player playerTwo = new Player(chart);
 
+        printGame();
+        while(itsAnOption) {
+            System.out.println("Where do you want to play?");
+            choice = sc.nextInt();
+            for (int n : numbers) {
+                if (n == choice) {
+                    itsAnOption = false;
+                    break;
+                }
+            }
+            System.out.println();
+            System.out.println("Chose a valid position!!!\n");
+        }
+        setOnPosition(playerOne,choice);
         printGame();
     }
 
