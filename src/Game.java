@@ -81,12 +81,18 @@ public class Game {
     private void resetPos(){
         int counter= 1;
         for (Position[] positions : table) {
-            for (int f = 0; f < positions.length; f++) {
-                positions[f].setPlayer(String.valueOf(counter));
+            for (Position position : positions) {
+                position.setPlayer(String.valueOf(counter));
                 counter++;
             }
         }
+
+        numbers.clear();
+        for(int i = 1; i <=9; i++){
+            numbers.add(i);
+        }
     }
+
 
     //Increase the number of victories/losses of a player
     private void playerScore(Player[] players, Player winner){
