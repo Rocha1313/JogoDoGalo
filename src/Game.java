@@ -22,15 +22,9 @@ public class Game {
     //Method's
     public void startGame(){
         Scanner sc = new Scanner(System.in);
-        String chart;
+        Player[] players = players();
         int choice = 0;
         boolean itsAnOption = true;
-        System.out.println("What's your character player one?");
-        chart = sc.next();
-        Player playerOne = new Player(chart);
-        System.out.println("What's your character player two?");
-        chart = sc.next();
-        Player playerTwo = new Player(chart);
 
         printGame();
         while(itsAnOption) {
@@ -45,8 +39,21 @@ public class Game {
             System.out.println();
             System.out.println("Chose a valid position!!!\n");
         }
-        setOnPosition(playerOne,choice);
+        setOnPosition(players[0],choice);
         printGame();
+    }
+
+    //Player's Organization
+    private Player[] players(){
+        Scanner sc = new Scanner(System.in);
+        String chart;
+        System.out.println("What's your character player one?");
+        chart = sc.next();
+        Player playerOne = new Player(chart);
+        System.out.println("What's your character player two?");
+        chart = sc.next();
+        Player playerTwo = new Player(chart);
+        return new Player[]{playerOne,playerTwo};
     }
 
     //Print game
