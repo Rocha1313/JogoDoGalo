@@ -29,7 +29,6 @@ public class Game {
         int playerThatMove = 0;
 
         while(playAgain.equals("1")) {
-            resetPos();
             printGame();
             while (true) {
                 while (itsAnOption) {
@@ -53,6 +52,7 @@ public class Game {
                 //Check Victory then if the player win, quit
 
                 if (checkVictory(players[playerThatMove])) {
+                    resetPos();
                     playerScore(players, players[playerThatMove]);
                     break;
                 }
@@ -79,8 +79,12 @@ public class Game {
 
     //Reset all position's
     private void resetPos(){
-        for(int i = 0; i <9; i++){
-            numbers.set(i,(i + 1));
+        int counter= 1;
+        for (Position[] positions : table) {
+            for (int f = 0; f < positions.length; f++) {
+                positions[f].setPlayer(String.valueOf(counter));
+                counter++;
+            }
         }
     }
 
