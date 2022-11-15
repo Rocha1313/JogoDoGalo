@@ -104,13 +104,13 @@ public class Game {
             if ((table[0][0].getPlayer().equals(player.getPlayerCharacter()) &&
                     (table[1][1].getPlayer().equals(player.getPlayerCharacter()) &&
                             (table[2][2].getPlayer().equals(player.getPlayerCharacter()))))) {
-                win = false;
+                win = true;
             }
 
             if ((table[2][0].getPlayer().equals(player.getPlayerCharacter()) &&
                     (table[1][1].getPlayer().equals(player.getPlayerCharacter()) &&
                             (table[0][2].getPlayer().equals(player.getPlayerCharacter()))))) {
-                win = false;
+                win = true;
             }
         }
 
