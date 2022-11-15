@@ -30,8 +30,9 @@ public class Game {
         while(itsAnOption) {
             System.out.println("Where do you want to play?");
             choice = sc.nextInt();
-            for (int n : numbers) {
-                if (n == choice) {
+            for (int i = 0; i < numbers.size(); i++) {
+                if (numbers.get(i) == choice) {
+                    numbers.remove(i);
                     itsAnOption = false;
                     break;
                 }
@@ -41,6 +42,59 @@ public class Game {
         }
         setOnPosition(players[0],choice);
         printGame();
+
+    }
+
+    //Check if the game have 3 in a row
+    private boolean checkVictory(Player player){
+        boolean win = false;
+
+        //Check Only rows
+        for (Position[] value : table) {
+            if (win) {
+                break;
+            }
+
+            for (Position position : value) {
+                if (!position.getPlayer().equals(player.getPlayerCharacter())) {
+                    win = false;
+                    break;
+                }
+                win = true;
+            }
+        }
+
+        //Check Only Columns
+        for (int i = 0; i < table.length; i++){
+            if (win) {
+                break;
+            }
+
+            for (Position[] positions : table) {
+                if (!positions[i].getPlayer().equals(player.getPlayerCharacter())) {
+                    win = false;
+                    break;
+                }
+                win = true;
+            }
+        }
+
+        //Check diagonal
+        {
+            if ((table[0][0].getPlayer().equals(player.getPlayerCharacter()) &&
+                    (table[1][1].getPlayer().equals(player.getPlayerCharacter()) &&
+                            (table[2][2].getPlayer().equals(player.getPlayerCharacter()))))) {
+                win = false;
+            }
+
+            if ((table[2][0].getPlayer().equals(player.getPlayerCharacter()) &&
+                    (table[1][1].getPlayer().equals(player.getPlayerCharacter()) &&
+                            (table[0][2].getPlayer().equals(player.getPlayerCharacter()))))) {
+                win = false;
+            }
+        }
+
+        return win;
     }
 
     //Player's Organization
