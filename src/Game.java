@@ -23,26 +23,46 @@ public class Game {
     public void startGame(){
         Scanner sc = new Scanner(System.in);
         Player[] players = players();
+
         int choice = 0;
         boolean itsAnOption = true;
+        int playerThatMove = 0;
 
         printGame();
-        while(itsAnOption) {
-            System.out.println("Where do you want to play?");
-            choice = sc.nextInt();
-            for (int i = 0; i < numbers.size(); i++) {
-                if (numbers.get(i) == choice) {
-                    numbers.remove(i);
-                    itsAnOption = false;
-                    break;
+        while(true) {
+            while (itsAnOption) {
+                System.out.println("Where do you want to play?");
+                choice = sc.nextInt();
+                for (int i = 0; i < numbers.size(); i++) {
+                    if (numbers.get(i) == choice) {
+                        numbers.remove(i);
+                        itsAnOption = false;
+                        break;
+                    }
+                }
+                if(itsAnOption) {
+                    System.out.println();
+                    System.out.println("Chose a valid position!!!\n");
                 }
             }
-            System.out.println();
-            System.out.println("Chose a valid position!!!\n");
-        }
-        setOnPosition(players[0],choice);
-        printGame();
+            setOnPosition(players[playerThatMove], choice);
+            printGame();
 
+            //Check Victory then if the player win, quit
+
+            if(checkVictory(players[playerThatMove])){
+                break;
+            }
+
+            //Change the player that will move at next round
+            if (playerThatMove == 1){
+                playerThatMove = 0;
+                itsAnOption = true;
+                continue;
+            }
+            playerThatMove = 1;
+            itsAnOption = true;
+        }
     }
 
     //Check if the game have 3 in a row
