@@ -24,11 +24,21 @@ public class Game {
         Scanner sc = new Scanner(System.in);
         Player[] players = players();
         String playAgain = "1";
-        int choice = 0;
-        boolean itsAnOption = true;
-        int playerThatMove = 0;
+        int choice;
+        boolean itsAnOption;
+        int playerThatMove;
 
         while(playAgain.equals("1")) {
+            System.out.println();
+            System.out.println("Player (  "+players[0].getPlayerCharacter()+"  ): "+players[0].getWins()+" win's    ---    "+players[0].getLosses()+" losses");
+            System.out.println();
+            System.out.println("Player (  "+players[1].getPlayerCharacter()+"  ): "+players[1].getWins()+" win's    ---    "+players[1].getLosses()+" losses");
+            System.out.println();
+
+            playerThatMove = (int) (Math.random() * 2);
+            itsAnOption = true;
+            choice = 0;
+
             printGame();
             while (true) {
                 while (itsAnOption) {
@@ -50,10 +60,9 @@ public class Game {
                 printGame();
 
                 //Check Victory then if the player win, quit
-
                 if (checkVictory(players[playerThatMove])) {
                     resetPos();
-                    playerScore(players, players[playerThatMove]);
+                    players[playerThatMove].setWins(players[playerThatMove].getWins() + 1);
                     break;
                 }
 
@@ -91,16 +100,6 @@ public class Game {
         for(int i = 1; i <=9; i++){
             numbers.add(i);
         }
-    }
-
-
-    //Increase the number of victories/losses of a player
-    private void playerScore(Player[] players, Player winner){
-        if(players[0] != winner){
-            players[0].setLosses((players[0].getLosses() + 1));
-        }
-        players[1].setLosses((players[1].getLosses() + 1));
-        winner.setWins(winner.getWins() + 1);
     }
 
     //Check if the game have 3 in a row
