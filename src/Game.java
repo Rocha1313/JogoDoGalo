@@ -79,6 +79,7 @@ public class Game {
 
                 //Check Draws
                 if(plays == 9){
+                    resetPos();
                     break;
                 }
 
